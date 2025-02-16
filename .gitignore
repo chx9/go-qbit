@@ -1,0 +1,40 @@
+# 构建生成的文件和目录
+/bin/
+/pkg/
+/staging/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# 临时文件和日志文件
+*.log
+*.tmp
+*.cache
+
+# IDE 和编辑器生成的文件
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# 测试缓存和覆盖率文件
+test.cache
+cover.out
+
+# 依赖管理工具相关
+vendor/
+go.sum
+
+# 环境配置文件
+.env
+.env.*
+
+# 数据库文件
+*.db
+
+# 配置文件示例（如果不希望提交配置示例）
+config.example.json
+config.example.yaml
+
+client_test.go
