@@ -31,9 +31,7 @@ func main() {
         log.Fatal(err)
     }
 
-    opts := map[string]string{"category": "books"}
-    // List torrents with optional filters, if opt is nil, list all torrents
-    torrents, err := client.List(opts)
+    torrents, err := client.List(opts, nil)
     if err != nil {
         log.Fatal(err)
     }
