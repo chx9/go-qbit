@@ -1,5 +1,5 @@
 # go-qbit
-go-qbit is a lightweight and easy-to-use Go client library for interacting with the [qBittorrent Web API](https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)). It providing a simple interface to manage torrents, preferences, and more.
+go-qbit is a lightweight and easy-to-use Go client library for interacting with the [qBittorrent Web API](https://github.com/qbittorrent/qBittorrent/wiki/WebUI-API-(qBittorrent-4.1)). It provides a simple interface to manage torrents, preferences, and more.
 # Features
 - Full API Coverage: Supports all major features of the qBittorrent Web API.
 - Simple and Intuitive: Clean API design for easy integration into your projects.
