@@ -109,6 +109,7 @@ func (client *Client) Get(endpoint string, opts map[string]string) (*http.Respon
 	}
 	return resp, nil
 }
+
 func (client *Client) PostURL(endpoint string, opts map[string]string) (*http.Response, error) {
 	if !client.Authed {
 		return nil, NotLogin
@@ -135,6 +136,7 @@ func (client *Client) PostURL(endpoint string, opts map[string]string) (*http.Re
 	}
 	return resp, nil
 }
+
 func (client *Client) Post(endpoint string, opts map[string]string) (*http.Response, error) {
 	req, err := http.NewRequest("POST", client.baseURL+endpoint, nil)
 	if err != nil {
