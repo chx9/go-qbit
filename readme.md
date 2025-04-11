@@ -31,7 +31,7 @@ func main() {
         log.Fatal(err)
     }
 
-    torrents, err := client.List(opts, nil)
+    torrents, err := client.List(nil)
     if err != nil {
         log.Fatal(err)
     }
