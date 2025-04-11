@@ -75,7 +75,9 @@ func (client *Client) GetGlobalUploadLimit() (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	var limit Limit
+	var limit struct {
+		Limit int `json:"limit"`
+	}
 	if err := json.NewDecoder(resp.Body).Decode(&limit); err != nil {
 		return 0, FailedToDecodeResponse(err)
 	}
