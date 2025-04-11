@@ -97,10 +97,6 @@ type Tracker struct {
 	Msg           string `json:"msg"`
 }
 
-type WebSeed struct {
-	URL string `json:"url"`
-}
-
 type File struct {
 	Index        int     `json:"index"`
 	Name         string  `json:"name"`
@@ -248,10 +244,3 @@ type TransferInfo struct {
 	ConnectionStatus string `json:"connection_status"`
 }
 
-type SpeedLimitsMode struct {
-	Enabled int `json:"enabled"`
-}
-
-type Limit struct {
-	Limit int `json:"limit"`
-}

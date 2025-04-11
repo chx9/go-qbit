@@ -51,21 +51,25 @@ func (client *Client) Trackers(hash string) ([]Tracker, error) {
 	return trackers, nil
 }
 
-func (client *Client) WebSeeds(hash string) ([]WebSeed, error) {
+func (client *Client) WebSeeds(hash string) ([]string, error) {
 	ep := "/api/v2/torrents/webseeds"
-	opts := map[string]string{
-		"hash": hash,
-	}
+	opts := map[string]string{"hash": hash}
 	resp, err := client.Get(ep, opts)
 	if err != nil {
 		return nil, err
 	}
-	var webseeds []WebSeed
-	if err := json.NewDecoder(resp.Body).Decode(&webseeds); err != nil {
-		return webseeds, FailedToDecodeResponse(err)
+	defer resp.Body.Close()
+	var webseeds []struct {
+		URL string `json:"url"`
 	}
-	return webseeds, nil
-
+	if err := json.NewDecoder(resp.Body).Decode(&webseeds); err != nil {
+		return nil, fmt.Errorf("decode failed: %w", err)
+	}
+	urls := make([]string, len(webseeds))
+	for i, item := range webseeds {
+		urls[i] = item.URL
+	}
+	return urls, nil
 }
 
 func (client *Client) Files(hash string, indexes string) ([]File, error) {

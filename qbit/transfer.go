@@ -24,11 +24,13 @@ func (client *Client) GetSpeedLimitsMode() (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	var mode SpeedLimitsMode
-	if err := json.NewDecoder(resp.Body).Decode(&mode); err != nil {
+    var mod struct {
+        Enabled int `json:"enabled"`
+    }
+	if err := json.NewDecoder(resp.Body).Decode(&mod); err != nil {
 		return 0, FailedToDecodeResponse(err)
 	}
-	return mode.Enabled, nil
+	return mod.Enabled, nil
 }
 
 func (client *Client) ToggleSpeedLimitsMode() error {
@@ -46,7 +48,9 @@ func (client *Client) GetGlobalDownloadLimit() (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	var limit Limit
+	var limit struct {
+		Limit int `json:"limit"`
+	}
 	if err := json.NewDecoder(resp.Body).Decode(&limit); err != nil {
 		return 0, FailedToDecodeResponse(err)
 	}
